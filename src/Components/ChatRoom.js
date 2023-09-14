@@ -53,7 +53,7 @@ const ChatRoom = () => {
           console.log("Received public message:", payLoadData); // Add this line for debugging
           switch (payLoadData.status) {
             case "JOIN":
-              if (privateChats.get(payLoadData.senderName)) {
+              if (!privateChats.get(payLoadData.senderName)) {
                 privateChats.set(payLoadData.senderName, []);
                 setPrivateChats(new Map(privateChats));
               }
@@ -69,8 +69,8 @@ const ChatRoom = () => {
 
   const onPrivateMessageReceived = (payload) => {
     let payLoadData = JSON.parse(payload);
-    if (privateChats.get(payLoadData.senderName)) {
-      privateChats.get(payLoadData.senderName).push(payLoadData);
+    if (!privateChats.get(payLoadData.senderName)) {
+      privateChats.set(payLoadData.senderName).push(payLoadData);
       setPrivateChats(new Map(privateChats));
     } else {
       let list = [];
@@ -118,29 +118,14 @@ const ChatRoom = () => {
     <div className="chatroom-container">
       {userData.connected ? (
         <div className="chat-box">
-          <div className="member-list">
-            <ul>
-              <li
-                onClick={() => {
-                  setTab("CHATROOM");
-                }}
-                className={`member ${tab === "CHATROOM" && "active"}`}
-              >
-                Chatroom
-              </li>
-              {[...privateChats.keys()].map((name, index) => (
-                <li
-                  onClick={() => {
-                    setTab(name);
-                  }}
-                  className={`member ${tab === name && "active"}`}
-                  key={index}
-                >
-                  {name}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="member-list">
+                <ul>
+                    <li onClick={()=>{setTab("CHATROOM")}} className={`member ${tab==="CHATROOM" && "active"}`}>Chatroom</li>
+                    {[...privateChats.keys()].map((name,index)=>(
+                        <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"}`} key={index}>{name}</li>
+                    ))}
+                </ul>
+            </div>
           {tab === "CHATROOM" && (
             <div className="chat-content">
               <ul className="chat-messages">
