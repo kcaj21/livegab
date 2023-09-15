@@ -10,7 +10,7 @@ const ChatRoom = () => {
   const [tab, setTab] = useState("CHATROOM");
   const [userData, setUserData] = useState({
     username: "",
-    receivername: "",
+    receiverName: "",
     connected: false,
     message: "",
   });
@@ -68,9 +68,10 @@ const ChatRoom = () => {
         
 
   const onPrivateMessageReceived = (payload) => {
-    let payLoadData = JSON.parse(payload);
-    if (!privateChats.get(payLoadData.senderName)) {
-      privateChats.set(payLoadData.senderName).push(payLoadData);
+    let payLoadData = JSON.parse(payload.body);
+    if (privateChats.get(payLoadData.senderName)) {
+      privateChats.get(payLoadData.senderName).push(payLoadData);
+      console.log('its HERE' + payLoadData)
       setPrivateChats(new Map(privateChats));
     } else {
       let list = [];
@@ -97,12 +98,12 @@ const ChatRoom = () => {
     if(stompClient) {
         let chatMessage = {
             senderName: userData.username,
-            receivername: tab,
+            receiverName: tab,
             message: userData.message,
             status: "MESSAGE"
         };
         if(userData.username !==tab){
-            privateChats.set(tab).push(chatMessage);
+            privateChats.get(tab).push(chatMessage);
             setPrivateChats(new Map(privateChats));
         }
         stompClient.send('/app/private-message', {}, JSON.stringify(chatMessage));
