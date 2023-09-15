@@ -1,0 +1,13 @@
+
+
+.chat-content {
+    /* flex: 1; This column grows to take up remaining space */
+    display: flex;
+    flex-direction: column;
+    /* float: left; */
+    width: 50%;
+  }
+
+
+
+

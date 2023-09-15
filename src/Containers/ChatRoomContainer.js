@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import Register from "../Components/Register";
+import ChatBox from "../Components/ChatBox";
 import MemberList from "../Components/MemberList";
 import ChatContent from "../Components/ChatContent";
+import "./ChatRoomContainer.css"
+
 
 var stompClient = null;
 
@@ -69,7 +72,6 @@ const ChatRoomContainer = () => {
           }
         };
         
-
   const onPrivateMessageReceived = (payload) => {
     let payLoadData = JSON.parse(payload.body);
     if (privateChats.get(payLoadData.senderName)) {
@@ -121,13 +123,10 @@ const ChatRoomContainer = () => {
   return (
     <div className="chatroom-container">
       {userData.connected ? (
-        <div className="chat-box">
-        <MemberList tab={tab} privateChats={privateChats} setTab={setTab} />
-        <ChatContent tab={tab} userData={userData} publicChats={publicChats} privateChats={privateChats} 
-        handleValue={handleValue} sendPublicMessage={sendPublicMessage} sendPrivateMessage={sendPrivateMessage}/>
-    </div>
+      <ChatBox tab={tab} userData={userData} publicChats={publicChats} privateChats={privateChats}
+      handleValue={handleValue} sendPublicMessage={sendPublicMessage} sendPrivateMessage={sendPrivateMessage} setTab={setTab}/>
       ) : (
-        <Register userData={userData} handleValue={handleValue} registerUser={registerUser}/>
+      <Register userData={userData} handleValue={handleValue} registerUser={registerUser}/>
       )}
     </div>
   )

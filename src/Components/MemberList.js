@@ -1,7 +1,9 @@
 import React from "react";
+import "./MemberList.css"
+
 
 const MemberList = ({ tab, privateChats, setTab }) => {
-    
+
   return (
             <div className="member-list">
                 <ul>

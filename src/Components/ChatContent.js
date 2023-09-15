@@ -1,9 +1,10 @@
 import React from 'react'
+import "./ChatContent.css"
 
 const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sendPublicMessage, sendPrivateMessage}) => {
   
     return (
-        
+
     <div className="chat-content">
       <ul className="chat-messages">
         {tab === "CHATROOM"
