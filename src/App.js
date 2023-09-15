@@ -1,9 +1,9 @@
-import ChatRoom from './Components/ChatRoom';
+import ChatRoomContainer from './Containers/ChatRoomContainer';
 
 function App() {
   return (
     <>
-    <ChatRoom/>
+    <ChatRoomContainer/>
     </>
   );
 }

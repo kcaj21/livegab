@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { over } from "stompjs";
 import SockJS from "sockjs-client";
+import Register from "../Components/Register";
 
 var stompClient = null;
 
-const ChatRoom = () => {
+const ChatRoomContainer = () => {
   const [publicChats, setPublicChats] = useState([]);
   const [privateChats, setPrivateChats] = useState(new Map());
   const [tab, setTab] = useState("CHATROOM");
@@ -50,7 +51,7 @@ const ChatRoom = () => {
 
         const onPublicMessageReceived = (payload) => {
           let payLoadData = JSON.parse(payload.body);
-          console.log("Received public message:", payLoadData); // Add this line for debugging
+          console.log("Received public message:", payLoadData);
           switch (payLoadData.status) {
             case "JOIN":
               if (!privateChats.get(payLoadData.senderName)) {
@@ -59,7 +60,7 @@ const ChatRoom = () => {
               }
               break;
             case "MESSAGE":
-              console.log("Received MESSAGE:", payLoadData.message); // Add this line for debugging
+              console.log("Received MESSAGE:", payLoadData.message);
               publicChats.push(payLoadData);
               setPublicChats([...publicChats]);
               break;
@@ -197,21 +198,10 @@ const ChatRoom = () => {
           )}
         </div>
       ) : (
-        <div className="register">
-          <input
-            name="username"
-            id="user-name"
-            placeholder="Enter your user name"
-            value={userData.username}
-            onChange={handleValue}
-          />
-          <button type="button" onClick={registerUser}>
-            connected
-          </button>
-        </div>
+        <Register userData={userData} handleValue={handleValue} registerUser={registerUser}/>
       )}
     </div>
   );
 };
 
-export default ChatRoom;
+export default ChatRoomContainer;
