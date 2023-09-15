@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import Register from "../Components/Register";
+import MemberList from "../Components/MemberList";
+import ChatContent from "../Components/ChatContent";
 
 var stompClient = null;
 
@@ -120,88 +122,15 @@ const ChatRoomContainer = () => {
     <div className="chatroom-container">
       {userData.connected ? (
         <div className="chat-box">
-        <div className="member-list">
-                <ul>
-                    <li onClick={()=>{setTab("CHATROOM")}} className={`member ${tab==="CHATROOM" && "active"}`}>Chatroom</li>
-                    {[...privateChats.keys()].map((name,index)=>(
-                        <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"}`} key={index}>{name}</li>
-                    ))}
-                </ul>
-            </div>
-          {tab === "CHATROOM" && (
-            <div className="chat-content">
-              <ul className="chat-messages">
-                {publicChats.map((chat, index) => (
-                  <li className="message" key={index}>
-                    {chat.senderName !== userData.username && (
-                      <div className="avatar">{chat.senderName}</div>
-                    )}
-                    <div className="message-data">{chat.message}</div>
-                    {chat.senderName === userData.username && (
-                      <div className="avatar-self">{chat.senderName}</div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-              <div className="send-message">
-                <input
-                  type="text"
-                  name="message"
-                  className="input-message"
-                  placeholder="Type a public message..."
-                  value={userData.message}
-                  onChange={handleValue}
-                />
-                <button
-                  type="button"
-                  className="send-button"
-                  onClick={sendPublicMessage}
-                >
-                  Send
-                </button>
-              </div>
-            </div>
-          )}
-          {tab !== "CHATROOM" && (
-            <div className="chat-content">
-              <ul className="chat-messages">
-                {[...privateChats.get(tab)].map((chat, index) => (
-                  <li className="message" key={index}>
-                    {chat.senderName !== userData.username && (
-                      <div className="avatar">{chat.senderName}</div>
-                    )}
-                    <div className="message-data">{chat.message}</div>
-                    {chat.senderName === userData.username && (
-                      <div className="avatar-self">{chat.senderName}</div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-              <div className="send-message">
-                <input
-                  name="message"
-                  type="text"
-                  className="input-message"
-                  placeholder={`Type a private message to ${tab}`}
-                  value={userData.message}
-                  onChange={handleValue}
-                />
-                <button
-                  type="button"
-                  className="send-button"
-                  onClick={sendPrivateMessage}
-                >
-                  Send
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+        <MemberList tab={tab} privateChats={privateChats} setTab={setTab} />
+        <ChatContent tab={tab} userData={userData} publicChats={publicChats} privateChats={privateChats} 
+        handleValue={handleValue} sendPublicMessage={sendPublicMessage} sendPrivateMessage={sendPrivateMessage}/>
+    </div>
       ) : (
         <Register userData={userData} handleValue={handleValue} registerUser={registerUser}/>
       )}
     </div>
-  );
-};
+  )
+}
 
 export default ChatRoomContainer;
