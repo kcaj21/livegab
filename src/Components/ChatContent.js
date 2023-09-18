@@ -45,7 +45,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
         />
         <button
           type="button"
-          className="send-button w-[12rem] h-[4rem] bg-slate-500"
+          className="send-button w-[12rem] h-[4rem] bg-green-800 text-white"
           onClick={
             tab === "CHATROOM" ? sendPublicMessage : sendPrivateMessage
           }
