@@ -4,7 +4,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
   
     return (
 
-    <div className="chat-content flex flex-col">
+    <div className="chat-content h-screen text-white  flex flex-grow">
       <ul className="chat-messages">
         {tab === "CHATROOM"
           ? publicChats.map((chat, index) => (
@@ -30,7 +30,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
                   </li>
             ))}
       </ul>
-      <div className="send-message">
+      <div className="send-message fixed bottom-0">
         <input
           name="message"
           type="text"

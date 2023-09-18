@@ -10,8 +10,8 @@ const Register = ({userData, handleValue, registerUser}) => {
       value={userData.username}
       onChange={handleValue}
     />
-    <button type="button" onClick={registerUser}>
-      connected
+    <button type="button" onClick={registerUser} className="text-white">
+      Join
     </button>
   </div>
   )

@@ -13,7 +13,7 @@ const ChatBox = ({
     setTab,
   }) => {
   return (
-    <div className="align-items-center flex-column">
+    <div className="Chatbox flex">
     <MemberList tab={tab} privateChats={privateChats} setTab={setTab} />
     <ChatContent tab={tab} userData={userData} publicChats={publicChats} privateChats={privateChats} 
     handleValue={handleValue} sendPublicMessage={sendPublicMessage} sendPrivateMessage={sendPrivateMessage}/>

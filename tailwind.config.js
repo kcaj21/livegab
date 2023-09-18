@@ -3,7 +3,11 @@ module.exports = {
   mode: 'jit',
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        'primary': '#808080',
+      }
+    },
   },
   plugins: [],
 }
