@@ -4,11 +4,11 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
   
     return (
 
-    <div className="chat-content h-screen text-white  flex flex-grow">
+    <div className="chat-content h-screen text-white">
       <ul className="chat-messages">
         {tab === "CHATROOM"
           ? publicChats.map((chat, index) => (
-            <li className="message" key={index}>
+            <li className="chat-bubble max-w-[80rem] mt-1.5 mb-.5 mr-2.5 ml-2.5 bg-yellow-200 text-gray-700" key={index}>
                     {chat.senderName !== userData.username && (
                       <div className="avatar">{chat.senderName}</div>
                     )}
@@ -19,7 +19,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
                   </li>
             ))
           : privateChats.get(tab).map((chat, index) => (
-            <li className="message" key={index}>
+            <li className="chat-bubble max-w-[80rem] mt-1.5 mb-.5 mr-2.5 ml-2.5 bg-yellow-200 text-gray-700" key={index}>
                     {chat.senderName !== userData.username && (
                       <div className="avatar">{chat.senderName}</div>
                     )}
@@ -31,7 +31,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
             ))}
       </ul>
       <div className="send-message fixed bottom-0">
-        <input
+        <input className="text-box"
           name="message"
           type="text"
           className="input-message"

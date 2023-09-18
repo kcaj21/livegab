@@ -14,9 +14,13 @@ const ChatBox = ({
   }) => {
   return (
     <div className="Chatbox flex">
-    <MemberList tab={tab} privateChats={privateChats} setTab={setTab} />
-    <ChatContent tab={tab} userData={userData} publicChats={publicChats} privateChats={privateChats} 
-    handleValue={handleValue} sendPublicMessage={sendPublicMessage} sendPrivateMessage={sendPrivateMessage}/>
+      <div className="SideBar h-screen w-full max-w-[18rem] bg-gray-600 text-white shadow-lg text-center">
+        <MemberList tab={tab} privateChats={privateChats} setTab={setTab} />
+        </div>
+        <div className="ChatContent">
+        <ChatContent tab={tab} userData={userData} publicChats={publicChats} privateChats={privateChats} 
+        handleValue={handleValue} sendPublicMessage={sendPublicMessage} sendPrivateMessage={sendPrivateMessage}/>
+      </div>
 </div>
   )
 }
