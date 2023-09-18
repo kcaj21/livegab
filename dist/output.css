@@ -1514,6 +1514,26 @@ html {
   margin-right: 2.5rem;
 }
 
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.mx-64 {
+  margin-left: 16rem;
+  margin-right: 16rem;
+}
+
+.mx-80 {
+  margin-left: 20rem;
+  margin-right: 20rem;
+}
+
+.mx-96 {
+  margin-left: 24rem;
+  margin-right: 24rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -1582,6 +1602,38 @@ html {
   height: 100vh;
 }
 
+.h-\[60rem\] {
+  height: 60rem;
+}
+
+.h-\[10rem\] {
+  height: 10rem;
+}
+
+.h-\[5rem\] {
+  height: 5rem;
+}
+
+.h-\[4rem\] {
+  height: 4rem;
+}
+
+.h-\[3rem\] {
+  height: 3rem;
+}
+
+.h-\[8rem\] {
+  height: 8rem;
+}
+
+.h-\[6rem\] {
+  height: 6rem;
+}
+
+.max-h-\[4rem\] {
+  max-height: 4rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1630,6 +1682,54 @@ html {
   width: 4rem;
 }
 
+.w-\[80rem\] {
+  width: 80rem;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
+.w-36 {
+  width: 9rem;
+}
+
+.w-40 {
+  width: 10rem;
+}
+
+.w-\[74rem\] {
+  width: 74rem;
+}
+
+.w-\[60rem\] {
+  width: 60rem;
+}
+
+.w-\[4rem\] {
+  width: 4rem;
+}
+
+.w-\[6rem\] {
+  width: 6rem;
+}
+
+.w-\[8rem\] {
+  width: 8rem;
+}
+
+.w-\[12rem\] {
+  width: 12rem;
+}
+
+.w-\[10rem\] {
+  width: 10rem;
+}
+
+.w-\[11rem\] {
+  width: 11rem;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -1644,6 +1744,10 @@ html {
 
 .max-w-\[80rem\] {
   max-width: 80rem;
+}
+
+.max-w-\[60rem\] {
+  max-width: 60rem;
 }
 
 .flex-1 {
@@ -1676,6 +1780,39 @@ html {
 
 .border {
   border-width: 1px;
+}
+
+.border-s {
+  border-inline-start-width: 1px;
+}
+
+.border-solid {
+  border-style: solid;
+}
+
+.border-red-50 {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 242 242 / var(--tw-border-opacity));
+}
+
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
+.border-s-red-500 {
+  --tw-border-opacity: 1;
+  border-inline-start-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
+.border-s-orange-50 {
+  --tw-border-opacity: 1;
+  border-inline-start-color: rgb(255 247 237 / var(--tw-border-opacity));
+}
+
+.border-s-orange-100 {
+  --tw-border-opacity: 1;
+  border-inline-start-color: rgb(255 237 213 / var(--tw-border-opacity));
 }
 
 .bg-gray-600 {
@@ -1721,6 +1858,11 @@ html {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-slate-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }
 
 .p-4 {

@@ -4,7 +4,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
   
     return (
 
-    <div className="chat-content h-screen text-white">
+    <div className="chat-content">
       <ul className="chat-messages">
         {tab === "CHATROOM"
           ? publicChats.map((chat, index) => (
@@ -34,7 +34,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
         <input className="text-box"
           name="message"
           type="text"
-          className="input-message"
+          className="input-message w-[60rem] max-w-[60rem] h-[4rem] max-h-[4rem] border-solid rounded"
           placeholder={
             tab === "CHATROOM"
               ? "Type a public message..."
@@ -45,7 +45,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
         />
         <button
           type="button"
-          className="send-button"
+          className="send-button w-[12rem] h-[4rem] bg-slate-500"
           onClick={
             tab === "CHATROOM" ? sendPublicMessage : sendPrivateMessage
           }
