@@ -1,11 +1,10 @@
 import React from "react";
-import "./MemberList.css"
 
 
 const MemberList = ({ tab, privateChats, setTab }) => {
 
   return (
-            <div className="member-list">
+            <div className="member-list fixed top-0 left-0 h-screen w-24 m-0 flex flex-col bg-gray-600 text-white shadow-lg">
                 <ul>
                     <li onClick={()=>{setTab("CHATROOM")}} className={`member ${tab==="CHATROOM" && "active"}`}>Chatroom</li>
                     {[...privateChats.keys()].map((name,index)=>(

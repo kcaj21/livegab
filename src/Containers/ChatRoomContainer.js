@@ -5,8 +5,6 @@ import Register from "../Components/Register";
 import ChatBox from "../Components/ChatBox";
 import MemberList from "../Components/MemberList";
 import ChatContent from "../Components/ChatContent";
-import "./ChatRoomContainer.css"
-
 
 var stompClient = null;
 
