@@ -14,7 +14,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
                     )}
                     <div className="message-data">{chat.message}</div>
                     {chat.senderName === userData.username && (
-                      <div className="avatar-self">{chat.senderName}</div>
+                      <div className="avatar-self">You</div>
                     )}
                   </li>
             ))
