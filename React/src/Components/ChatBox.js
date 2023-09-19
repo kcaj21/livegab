@@ -1,6 +1,6 @@
 import React from 'react'
-import MemberList from "../Components/MemberList";
-import ChatContent from "../Components/ChatContent";
+import MemberList from "./MemberList";
+import ChatContent from "./ChatContent";
 
 const ChatBox = ({
     tab,
