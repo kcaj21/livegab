@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sendPublicMessage, sendPrivateMessage}) => {
+const ChatContent = ({tab, userData, publicChats, privateChats}) => {
   
     return (
 
@@ -10,7 +10,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
           ? publicChats.map((chat, index) => (
             <li
                 className={`chat-bubble  bg-yellow-200 text-gray-700 ${
-                  chat.senderName !== userData.username ? "place-self-start" : "place-self-end mr-28"
+                  chat.senderName !== userData.username ? "place-self-start" : "place-self-end"
                 }`}
                 key={index}
               >
@@ -35,29 +35,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
                   </li>
             ))}
       </ul>
-      <div className="send-message fixed bottom-0">
-        <input className="text-box"
-          name="message"
-          type="text"
-          className="input-message w-[60rem] max-w-[60rem] h-[4rem] max-h-[4rem] border-solid rounded"
-          placeholder={
-            tab === "CHATROOM"
-              ? "Type a public message..."
-              : `Type a private message to ${tab}`
-          }
-          value={userData.message}
-          onChange={handleValue}
-        />
-        <button
-          type="button"
-          className="send-button w-[12rem] h-[4rem] bg-green-800 text-white"
-          onClick={
-            tab === "CHATROOM" ? sendPublicMessage : sendPrivateMessage
-          }
-        >
-          Send
-        </button>
-      </div>
+
     </div>
   );
 };
