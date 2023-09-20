@@ -6,6 +6,16 @@ const MessageInput = ({tab,
     sendPublicMessage,
     sendPrivateMessage,
     }) => {
+
+      const handleKeyPress = (event) => {
+        // look for the `Enter` keyCode
+        if (event.keyCode === 13 || event.which === 13 && tab === "CHATROOM") {
+          sendPublicMessage()
+        } else if (event.keyCode === 13 || event.which === 13) {
+          sendPrivateMessage()
+        }}
+      
+
   return (
     <div className="send-message w-[80rem]">
     <input className="text-box"
@@ -19,6 +29,7 @@ const MessageInput = ({tab,
       }
       value={userData.message}
       onChange={handleValue}
+      onKeyPress={handleKeyPress}
     />
     <button
       type="button"

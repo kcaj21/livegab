@@ -11,7 +11,7 @@ const MemberList = ({ tab, privateChats, setTab, userData }) => {
                     <li className="rounded mb-4">Private Chats</li>
                     {[...privateChats.keys()].map((name,index)=>(
                         <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"} border ${
-                  name == userData.username ? "bg-yellow-200 text-gray-700 " : "bg-gray-700 rounded"
+                  name == userData.username ? "bg-yellow-200 text-gray-700 rounded" : "bg-gray-700 rounded"
                 } `} key={index}>{name}</li>
                     ))}
                 </ul>
