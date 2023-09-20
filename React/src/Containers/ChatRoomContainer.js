@@ -91,6 +91,7 @@ const ChatRoomContainer = () => {
   };
 
   const sendUserNames = () => {
+    // this is called after onPublicMessageReceived so all users will send their userNames out when a new user joins so that the new user can append them to their membersList in their prvateChats state
     if(stompClient) {
       let chatMessage = {
           senderName: userData.username,
