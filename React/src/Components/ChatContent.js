@@ -4,7 +4,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, handleValue, sen
   
     return (
 
-    <div className="chat-content">
+    <div className="chat-content ">
       <ul className="chat-messages mt-2 space-y-2 grid grid-cols-1 min-w-[80rem]">
         {tab === "CHATROOM"
           ? publicChats.map((chat, index) => (
