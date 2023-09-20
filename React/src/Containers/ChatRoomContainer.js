@@ -67,11 +67,11 @@ const ChatRoomContainer = () => {
               publicChats.push(payLoadData);
               setPublicChats([...publicChats]);
               // this adds the specific user who sent the message to everyone's privateChats state - working on adding everyone's username to everyone's state
-              if (!privateChats.get(payLoadData.senderName)) {
-                privateChats.set(payLoadData.senderName, []);
-                setPrivateChats(new Map(privateChats));
-                console.log("set " + payLoadData.senderName)
-              }
+              // if (!privateChats.get(payLoadData.senderName)) {
+              //   privateChats.set(payLoadData.senderName, []);
+              //   setPrivateChats(new Map(privateChats));
+              //   console.log("set " + payLoadData.senderName)
+              // }
               break;
           }
         };
@@ -94,8 +94,7 @@ const ChatRoomContainer = () => {
     if(stompClient) {
       let chatMessage = {
           senderName: userData.username,
-          message: userData.username + " joined!",
-          status: "MESSAGE"
+          status: "JOIN"
       };
       stompClient.send('/app/message', {}, JSON.stringify(chatMessage));
     
