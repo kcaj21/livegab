@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import Register from "../Components/Register";
 import ChatBox from "../Components/ChatBox";
-import MemberList from "../Components/MemberList";
-import ChatContent from "../Components/ChatContent";
 
 var stompClient = null;
 
@@ -18,6 +16,7 @@ const ChatRoomContainer = () => {
     connected: false,
     message: "",
   });
+
 
   const handleValue = (e) => {
     const {value, name} = e.target;
@@ -66,6 +65,12 @@ const ChatRoomContainer = () => {
               console.log("Received MESSAGE:", payLoadData.message);
               publicChats.push(payLoadData);
               setPublicChats([...publicChats]);
+              // this adds the specific user who sent the message to everyone's privateChats state - working on adding everyone's username to everyone's state
+              if (!privateChats.get(payLoadData.senderName)) {
+                privateChats.set(payLoadData.senderName, []);
+                setPrivateChats(new Map(privateChats));
+                console.log("set " + payLoadData.senderName)
+              }
               break;
           }
         };

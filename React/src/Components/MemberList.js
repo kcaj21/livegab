@@ -1,7 +1,8 @@
-import React from "react";
-
+import React, { useEffect } from "react";
 
 const MemberList = ({ tab, privateChats, setTab }) => {
+
+        useEffect(() => {}, [privateChats]);
 
   return (
             <div className="member-list">
@@ -14,6 +15,8 @@ const MemberList = ({ tab, privateChats, setTab }) => {
                 </ul>
             </div>
   );
+
+  
 };
 
 export default MemberList;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import MemberList from "./MemberList";
 import ChatContent from "./ChatContent";
 
@@ -12,6 +12,7 @@ const ChatBox = ({
     sendPrivateMessage,
     setTab,
   }) => {
+
   return (
     <div className="Chatbox flex">
       <div className="SideBar h-screen w-full max-w-[18rem] bg-gray-600 text-white shadow-lg text-center">
