@@ -59,6 +59,7 @@ const ChatRoomContainer = () => {
               if (!privateChats.get(payLoadData.senderName)) {
                 privateChats.set(payLoadData.senderName, []);
                 setPrivateChats(new Map(privateChats));
+                sendUserNames()
               }
               break;
             case "MESSAGE":
@@ -88,6 +89,17 @@ const ChatRoomContainer = () => {
       setPrivateChats(new Map(privateChats));
     }
   };
+
+  const sendUserNames = () => {
+    if(stompClient) {
+      let chatMessage = {
+          senderName: userData.username,
+          message: userData.username + " joined!",
+          status: "MESSAGE"
+      };
+      stompClient.send('/app/message', {}, JSON.stringify(chatMessage));
+    
+  }}
 
   const sendPublicMessage = () => {
     if(stompClient) {
