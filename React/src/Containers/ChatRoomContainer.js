@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import Register from "../Components/Register";
@@ -98,7 +98,6 @@ const ChatRoomContainer = () => {
           status: "JOIN"
       };
       stompClient.send('/app/message', {}, JSON.stringify(chatMessage));
-    
   }}
 
   const sendPublicMessage = () => {
