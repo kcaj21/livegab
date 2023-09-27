@@ -8,7 +8,6 @@ const MessageInput = ({tab,
     }) => {
 
       const handleKeyPress = (event) => {
-        // look for the `Enter` keyCode
         if (event.keyCode === 13 || event.which === 13 && tab === "CHATROOM") {
           sendPublicMessage()
         } else if (event.keyCode === 13 || event.which === 13) {

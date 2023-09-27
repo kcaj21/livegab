@@ -35,7 +35,6 @@ const ChatContent = ({tab, userData, publicChats, privateChats}) => {
                   </li>
             ))}
       </ul>
-
     </div>
   );
 };
