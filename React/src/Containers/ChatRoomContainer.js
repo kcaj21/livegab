@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { over } from "stompjs";
+import React, { useEffect, useState } from "react";
+import { Stomp, over } from "stompjs";
 import SockJS from "sockjs-client";
 import Register from "../Components/Register";
 import ChatBox from "../Components/ChatBox";
@@ -17,6 +17,19 @@ const ChatRoomContainer = () => {
     message: "",
   });
 
+  useEffect (() => {
+    fetch("http://localhost:8080/allMessages")
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+    console.log(data)
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Failed to retrieve data. Please try again later.');
+    });
+  })
 
   const handleValue = (e) => {
     const {value, name} = e.target;
@@ -35,6 +48,14 @@ const ChatRoomContainer = () => {
 
   const onConnected = () => {
     setUserData({ ...userData, connected: true });
+    // stompClient.subscribe("/fetch-messages", (payLoad) => {
+    //   const fetchedMessages = JSON.parse(payLoad.body);
+    //   publicChats.push(fetchedMessages);
+    //   setPublicChats([...publicChats]);
+    // console.log({fetchedMessages})
+    // })
+    // stompClient.subscribe("/history/public", onPublicMessageReceived);
+    // stompClient.subscribe("/allMessages", onAllMessagesReceived);
     stompClient.subscribe("/chatroom/public", onPublicMessageReceived);
     stompClient.subscribe(
       "/user/" + userData.username + "/private",
@@ -80,7 +101,6 @@ const ChatRoomContainer = () => {
     let payLoadData = JSON.parse(payload.body);
     if (privateChats.get(payLoadData.senderName)) {
       privateChats.get(payLoadData.senderName).push(payLoadData);
-      console.log('its HERE' + payLoadData)
       setPrivateChats(new Map(privateChats));
     } else {
       let list = [];
@@ -89,6 +109,10 @@ const ChatRoomContainer = () => {
       setPrivateChats(new Map(privateChats));
     }
   };
+
+  // const onAllMessagesReceived = () => {
+  //   console.log("subbed")
+  // };
 
   const sendUserNames = () => {
     // this is called after onPublicMessageReceived so all users will send their userNames out when a new user joins so that the new user can append them to their membersList in their prvateChats state
