@@ -29,7 +29,7 @@ const ChatRoomContainer = () => {
       console.error(error);
       alert('Failed to retrieve data. Please try again later.');
     });
-  })
+  }, [])
 
   const handleValue = (e) => {
     const {value, name} = e.target;
