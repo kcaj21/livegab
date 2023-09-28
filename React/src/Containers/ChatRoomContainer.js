@@ -17,19 +17,26 @@ const ChatRoomContainer = () => {
     message: "",
   });
 
-  useEffect (() => {
-    fetch("http://localhost:8080/allMessages/MESSAGE")
-    .then(response => {
-      return response.json()
-    })
-    .then(data => {
-    console.log(data);
-    })
-    .catch(error => {
-      console.error(error);
-      // alert('everything is broken.');
-    });
-  }, [])
+  // useEffect (() => {
+  //   fetch("http://localhost:8080/allMessages/")
+  //   .then(response => {
+  //     return response.json()
+  //   })
+  //   .then(data => {
+  //   console.log(data);
+  //   data.forEach(message => {
+  //     if (message.message != null){
+  //       publicChats.push(message);
+  //       setPublicChats([...publicChats]);
+  //     }
+  //   });
+  //   })
+  //   .catch(error => {
+  //     console.error(error);
+  //     // alert('everything is broken.');
+  //   });
+
+  // }, [])
 
 
   const handleValue = (e) => {
@@ -57,6 +64,23 @@ const ChatRoomContainer = () => {
     // })
     // stompClient.subscribe("/history/public", onPublicMessageReceived);
     // stompClient.subscribe("/allMessages", onAllMessagesReceived);
+    fetch("http://localhost:8080/allMessages/")
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+    console.log(data);
+    data.forEach(message => {
+      if (message.message != null){
+        publicChats.push(message);
+        setPublicChats([...publicChats]);
+      }
+    });
+    })
+    .catch(error => {
+      console.error(error);
+      // alert('everything is broken.');
+    });
     stompClient.subscribe("/chatroom/public", onPublicMessageReceived);
     stompClient.subscribe(
       "/user/" + userData.username + "/private",

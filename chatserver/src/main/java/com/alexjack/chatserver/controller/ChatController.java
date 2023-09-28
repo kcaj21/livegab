@@ -47,12 +47,12 @@ public class ChatController {
         List<Message> allMessages = messageRepository.findAll();
         return ResponseEntity.ok(allMessages);
     }
-    @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/allMessages/{Status}")
-    public ResponseEntity<List<Message>> getAllMessages(@RequestParam(name="status", required=false) Status status){
-        List<Message> filteredMessages = messageRepository.findMessagesByStatus(status);
-        System.out.println(filteredMessages);
-        return new ResponseEntity<>(filteredMessages, HttpStatus.OK);
+//    @CrossOrigin(origins = "http://localhost:3000")
+//    @GetMapping("/allMessages/{Status}")
+//    public ResponseEntity<List<Message>> getAllMessages(@RequestParam(name="status", required=false) Status status){
+//        List<Message> filteredMessages = messageRepository.findMessagesByStatus(status);
+//        System.out.println(filteredMessages);
+//        return ResponseEntity.ok(filteredMessages);
+//    }
 
-    }
 }
