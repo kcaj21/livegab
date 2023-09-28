@@ -18,18 +18,19 @@ const ChatRoomContainer = () => {
   });
 
   useEffect (() => {
-    fetch("http://localhost:8080/allMessages")
+    fetch("http://localhost:8080/allMessages/MESSAGE")
     .then(response => {
       return response.json()
     })
     .then(data => {
-    console.log(data)
+    console.log(data);
     })
     .catch(error => {
       console.error(error);
-      alert('Failed to retrieve data. Please try again later.');
+      // alert('everything is broken.');
     });
   }, [])
+
 
   const handleValue = (e) => {
     const {value, name} = e.target;

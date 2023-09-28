@@ -1,18 +1,17 @@
 package com.alexjack.chatserver.controller;
 
 import com.alexjack.chatserver.model.Message;
+import com.alexjack.chatserver.model.Status;
 import com.alexjack.chatserver.repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -47,5 +46,13 @@ public class ChatController {
     public ResponseEntity<List<Message>> getAllMessages(){
         List<Message> allMessages = messageRepository.findAll();
         return ResponseEntity.ok(allMessages);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/allMessages/{Status}")
+    public ResponseEntity<List<Message>> getAllMessages(@RequestParam(name="status", required=false) Status status){
+        List<Message> filteredMessages = messageRepository.findMessagesByStatus(status);
+        System.out.println(filteredMessages);
+        return new ResponseEntity<>(filteredMessages, HttpStatus.OK);
+
     }
 }
