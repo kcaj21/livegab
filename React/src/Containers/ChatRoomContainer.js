@@ -17,36 +17,10 @@ const ChatRoomContainer = () => {
     message: "",
   });
 
-  // useEffect (() => {
-  //   fetch("http://localhost:8080/allMessages/")
-  //   .then(response => {
-  //     return response.json()
-  //   })
-  //   .then(data => {
-  //   console.log(data);
-  //   data.forEach(message => {
-  //     if (message.message != null){
-  //       publicChats.push(message);
-  //       setPublicChats([...publicChats]);
-  //     }
-  //   });
-  //   })
-  //   .catch(error => {
-  //     console.error(error);
-  //     // alert('everything is broken.');
-  //   });
-
-  // }, [])
-
-
   const handleValue = (e) => {
     const {value, name} = e.target;
     setUserData({ ...userData, [name]:value });
   };
-
-//   const handleMessage = (e) => {
-//     setUserData[{ ...userData, message: e.target.value }];
-//   };
 
   const registerUser = () => {
     let Sock = new SockJS("http://localhost:8080/ws");
@@ -55,15 +29,6 @@ const ChatRoomContainer = () => {
   };
 
   const onConnected = () => {
-    setUserData({ ...userData, connected: true });
-    // stompClient.subscribe("/fetch-messages", (payLoad) => {
-    //   const fetchedMessages = JSON.parse(payLoad.body);
-    //   publicChats.push(fetchedMessages);
-    //   setPublicChats([...publicChats]);
-    // console.log({fetchedMessages})
-    // })
-    // stompClient.subscribe("/history/public", onPublicMessageReceived);
-    // stompClient.subscribe("/allMessages", onAllMessagesReceived);
     fetch("http://localhost:8080/allMessages/")
     .then(response => {
       return response.json()
@@ -81,6 +46,7 @@ const ChatRoomContainer = () => {
       console.error(error);
       // alert('everything is broken.');
     });
+    setUserData({ ...userData, connected: true });
     stompClient.subscribe("/chatroom/public", onPublicMessageReceived);
     stompClient.subscribe(
       "/user/" + userData.username + "/private",
@@ -112,12 +78,6 @@ const ChatRoomContainer = () => {
               console.log("Received MESSAGE:", payLoadData.message);
               publicChats.push(payLoadData);
               setPublicChats([...publicChats]);
-              // this adds the specific user who sent the message to everyone's privateChats state - working on adding everyone's username to everyone's state
-              // if (!privateChats.get(payLoadData.senderName)) {
-              //   privateChats.set(payLoadData.senderName, []);
-              //   setPrivateChats(new Map(privateChats));
-              //   console.log("set " + payLoadData.senderName)
-              // }
               break;
           }
         };
@@ -134,10 +94,6 @@ const ChatRoomContainer = () => {
       setPrivateChats(new Map(privateChats));
     }
   };
-
-  // const onAllMessagesReceived = () => {
-  //   console.log("subbed")
-  // };
 
   const sendUserNames = () => {
     // this is called after onPublicMessageReceived so all users will send their userNames out when a new user joins so that the new user can append them to their membersList in their prvateChats state
