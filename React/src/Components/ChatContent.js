@@ -10,7 +10,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, sendPublicMessag
         {tab === "CHATROOM"
           ? publicChats.map((chat, index) => (
             <li
-                className={`chat-bubble max-w-[100%] break-words bg-yellow-200 text-gray-700 ${
+                className={`chat-bubble max-w-[100%] break-words bg-secondary text-[#ffffffb9] ${
                   chat.senderName !== userData.username ? "place-self-start" : "place-self-end"
                 }`}
                 key={index}
