@@ -32,7 +32,7 @@ const MessageInput = ({tab,
     />
     <button
       type="button"
-      className="send-button w-[20%] bg-green-800 text-white"
+      className="send-button w-[20%] bg-[#8a9766] text-white"
       onClick={
         tab === "CHATROOM" ? sendPublicMessage : sendPrivateMessage
       }

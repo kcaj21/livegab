@@ -140,7 +140,7 @@ const ChatRoomContainer = () => {
   };
 
   return (
-    <div className="chatroom-container">
+    <div className="chatroom-container bg-primary">
       {userData.connected ? (
       <ChatBox tab={tab} userData={userData} publicChats={publicChats} privateChats={privateChats}
       handleValue={handleValue} sendPublicMessage={sendPublicMessage} sendPrivateMessage={sendPrivateMessage} setTab={setTab}/>
