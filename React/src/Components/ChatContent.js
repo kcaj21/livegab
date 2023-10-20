@@ -1,11 +1,12 @@
 import React from 'react'
+import MessageInput from './MessageInput';
 
-const ChatContent = ({tab, userData, publicChats, privateChats}) => {
+const ChatContent = ({tab, userData, publicChats, privateChats, sendPublicMessage, handleValue, sendPrivateMessage}) => {
   
     return (
 
-    <div className="chat-content ">
-      <ul className="chat-messages ml-1 mt-2 space-y-2 grid grid-cols-1 min-w-[80rem]">
+    <div className="chat-content">
+      <ul className="chat-messages ml-1 mt-2 space-y-2 grid grid-cols-1 max-w-screen text-xl">
         {tab === "CHATROOM"
           ? publicChats.map((chat, index) => (
             <li
@@ -24,7 +25,9 @@ const ChatContent = ({tab, userData, publicChats, privateChats}) => {
                   </li>
             ))
           : privateChats.get(tab).map((chat, index) => (
-            <li className="chat-bubble max-w-[80rem] mt-1.5 mb-.5 mr-2.5 ml-2.5 bg-yellow-200 text-gray-700" key={index}>
+            <li className={`chat-bubble  bg-yellow-200 text-gray-700 ${
+                  chat.senderName !== userData.username ? "place-self-start" : "place-self-end"
+                }`} key={index}>
                     {chat.senderName !== userData.username && (
                       <div className="avatar">{chat.senderName}</div>
                     )}
@@ -35,6 +38,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats}) => {
                   </li>
             ))}
       </ul>
+
     </div>
   );
 };

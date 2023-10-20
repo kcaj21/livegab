@@ -14,13 +14,12 @@ const ChatBox = ({
   setTab,
 }) => {
   return (
-    <div className="Chatbox flex">
-      <div className="SideBar flex-col-1 h-screen w-full max-w-[15%] bg-gray-600 text-white shadow-lg text-center">
+    <div className="Chatbox h-screen flex flex-col-2">
+      <div className="SideBar w-full max-w-[15%] bg-gray-600 text-white shadow-lg text-center">
         <MemberList tab={tab} privateChats={privateChats} setTab={setTab} userData={userData} />
       </div>
-      <div className="ChatContentAndInput flex-col-2">
-        <div className="ChatContent flex-row-1  max-h-[calc(100vh-8vh)] overflow-y-auto">
-          <ChatContent
+        <div className='h-[90%] overflow-y-auto'>
+          <ChatContent 
             tab={tab}
             userData={userData}
             publicChats={publicChats}
@@ -29,8 +28,8 @@ const ChatBox = ({
             sendPublicMessage={sendPublicMessage}
             sendPrivateMessage={sendPrivateMessage}
           />
-        </div>
-        <div className="messageSender flex-row-2 fixed bottom-0">
+          </div>
+        <div className="messageSender h-[10%] w-[85%] fixed bottom-0 right-0">
           <MessageInput
             tab={tab}
             userData={userData}
@@ -41,7 +40,6 @@ const ChatBox = ({
             sendPrivateMessage={sendPrivateMessage}
           />
         </div>
-      </div>
     </div>
   );
 };

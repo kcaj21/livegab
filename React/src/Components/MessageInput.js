@@ -16,11 +16,11 @@ const MessageInput = ({tab,
       
 
   return (
-    <div className="send-message w-[80rem]">
-    <input className="text-box"
+    <div className="send-message h-full flex flex-col-2">
+    <input
       name="message"
       type="text"
-      className="input-message w-[85%] h-[4rem] max-h-[4rem] border-solid rounded"
+      className="input-message w-[80%] border-solid rounded"
       placeholder={
         tab === "CHATROOM"
           ? "Type a public message..."
@@ -32,7 +32,7 @@ const MessageInput = ({tab,
     />
     <button
       type="button"
-      className="send-button w-[15%] h-[4rem] bg-green-800 text-white"
+      className="send-button w-[20%] bg-green-800 text-white"
       onClick={
         tab === "CHATROOM" ? sendPublicMessage : sendPrivateMessage
       }
