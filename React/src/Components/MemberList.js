@@ -7,8 +7,8 @@ const MemberList = ({ tab, privateChats, setTab, userData }) => {
   return (
             <div className="member-list">
                 <ul>
-                    <li onClick={()=>{setTab("CHATROOM")}} className={`member ${tab==="CHATROOM" && "active"} border bg-gray-400 rounded mb-4`}>Chatroom</li>
-                    <li className="rounded mb-4">Private Chats</li>
+                    <li onClick={()=>{setTab("CHATROOM")}} className={`member ${tab==="CHATROOM" && "active"} max-w-[100%] break-words  border bg-gray-400 rounded mb-4`}>Chatroom</li>
+                    <li className="max-w-[100%] break-words rounded mb-4">Private Chats</li>
                     {[...privateChats.keys()].map((name,index)=>(
                         <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"} border ${
                   name == userData.username ? "bg-yellow-200 text-gray-700 rounded" : "bg-gray-700 rounded"
