@@ -16,7 +16,7 @@ const MessageInput = ({tab,
       
 
   return (
-    <div className="send-message h-full flex flex-col-2 border-2 border-solid rounded-xl border-[#282A3A] hover:border-[#3d4059] ">
+    <div className="send-message h-full flex flex-col-2 border-2 border-solid rounded-xl border-[#2f3245] hover:border-[#3d4059] ">
     <input
       name="message"
       type="text"

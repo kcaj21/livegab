@@ -6,12 +6,12 @@ const ChatContent = ({tab, userData, publicChats, privateChats, sendPublicMessag
     return (
 
     <div className="chat-content">
-      <ul className="chat-messages ml-1 mt-2 space-y-2 grid grid-cols-1 max-w-screen text-xl">
+      <ul className="chat-messages  mt-2 space-y-2 grid grid-cols-1 max-w-screen text-xl">
         {tab === "CHATROOM"
           ? publicChats.map((chat, index) => (
             <li
-                className={`chat-bubble max-w-[100%] break-words bg-secondary text-[#ffffffb9] ${
-                  chat.senderName !== userData.username ? "place-self-start" : "place-self-end"
+                className={`chat-bubble max-w-[90%] break-words bg-secondary text-[#ffffffb9] ${
+                  chat.senderName !== userData.username ? "place-self-start ml-4" : "place-self-end mr-4"
                 }`}
                 key={index}
               >
@@ -25,8 +25,8 @@ const ChatContent = ({tab, userData, publicChats, privateChats, sendPublicMessag
                   </li>
             ))
           : privateChats.get(tab).map((chat, index) => (
-            <li className={`chat-bubble max-w-[100%] break-words  bg-yellow-200 text-gray-700 ${
-                  chat.senderName !== userData.username ? "place-self-start" : "place-self-end"
+            <li className={`chat-bubble max-w-[90%] break-words  bg-secondary text-[#ffffffb9] ${
+                  chat.senderName !== userData.username ? "place-self-start ml-4" : "place-self-end mr-4"
                 }`} key={index}>
                     {chat.senderName !== userData.username && (
                       <div className="avatar">{chat.senderName}</div>
