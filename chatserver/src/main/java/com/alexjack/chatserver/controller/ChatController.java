@@ -41,7 +41,7 @@ public class ChatController {
         return message;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping("/allMessages")
     public ResponseEntity<List<Message>> getAllMessages(){
         List<Message> allMessages = messageRepository.findAll();

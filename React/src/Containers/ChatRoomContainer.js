@@ -23,14 +23,14 @@ const ChatRoomContainer = () => {
   };
 
   const registerUser = () => {
-    let Sock = new SockJS("http://localhost:8080/ws");
+    let Sock = new SockJS("http://192.168.0.42:8080/ws");
     stompClient = over(Sock);
     stompClient.connect({}, onConnected, onError);
     console.log('try connect')
   };
 
   const onConnected = () => {
-    fetch("http://localhost:8080/allMessages/")
+    fetch("http://192.168.0.42:8080/allMessages/")
     .then(response => {
       return response.json()
     })
