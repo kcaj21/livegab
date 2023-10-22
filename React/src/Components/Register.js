@@ -1,22 +1,6 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 
 const Register = ({userData, handleValue, registerUser}) => {
-
-  // useEffect(() => {
-
-  //   const btn = document.getElementById('reg-btn');
-  //   btn.addEventListener('click', registerUser);
-
-  //   return () => {
-
-  //     btn.removeEventListener('click', registerUser);
-  //   };
-
-  // }, [registerUser]);
-
-  const click = () => {
-    console.log('hello')
-  }
   
   return (
 
@@ -25,8 +9,8 @@ const Register = ({userData, handleValue, registerUser}) => {
     <input
       name="username"
       type='text'
-      className="input-accent w-[30%] h-[5%] border rounded bg-[#282A3A] border-[#7d94b5] text-center mb-4"
-      placeholder="Enter your user name"
+      className="w-[30%] h-[5%] border text-slate-400 rounded bg-[#282A3A] border-[#7d94b5] text-center mb-4"
+      placeholder="Enter your username"
       value={userData.username}
       onChange={handleValue}
     />

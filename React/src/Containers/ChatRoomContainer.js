@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Stomp, over } from "stompjs";
+import React, { useState } from "react";
+import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import Register from "../Components/Register";
 import ChatBox from "../Components/ChatBox";
+import axios from "axios";
 
 let stompClient = null;
 
@@ -16,6 +17,8 @@ const ChatRoomContainer = () => {
     connected: false,
     message: "",
   });
+
+  
 
   const handleValue = (e) => {
     const {value, name} = e.target;
@@ -146,7 +149,9 @@ const ChatRoomContainer = () => {
       <ChatBox tab={tab} userData={userData} publicChats={publicChats} privateChats={privateChats}
       handleValue={handleValue} sendPublicMessage={sendPublicMessage} sendPrivateMessage={sendPrivateMessage} setTab={setTab}/>
       ) : (
+      <div className="flex flex-col justify-center h-screen">
       <Register userData={userData} handleValue={handleValue} registerUser={registerUser}/>
+      </div>
       )}
     </div>
   )
