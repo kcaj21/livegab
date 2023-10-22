@@ -1,8 +1,25 @@
 import React, {useEffect} from 'react'
 
 const Register = ({userData, handleValue, registerUser}) => {
+
+  // useEffect(() => {
+
+  //   const btn = document.getElementById('reg-btn');
+  //   btn.addEventListener('click', registerUser);
+
+  //   return () => {
+
+  //     btn.removeEventListener('click', registerUser);
+  //   };
+
+  // }, [registerUser]);
+
+  const click = () => {
+    console.log('hello')
+  }
   
   return (
+
     <div className=" flex flex-col items-center h-screen justify-center">
     <h1 className='mb-24 text-6xl text-[#FFFFFF] font-extrabold'>livegab</h1>
     <input
@@ -20,6 +37,7 @@ const Register = ({userData, handleValue, registerUser}) => {
       Join
     </button>
   </div>
+  
   )
 }
 

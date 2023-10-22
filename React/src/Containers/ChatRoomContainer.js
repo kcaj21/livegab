@@ -4,7 +4,7 @@ import SockJS from "sockjs-client";
 import Register from "../Components/Register";
 import ChatBox from "../Components/ChatBox";
 
-var stompClient = null;
+let stompClient = null;
 
 const ChatRoomContainer = () => {
   const [publicChats, setPublicChats] = useState([]);
@@ -26,6 +26,7 @@ const ChatRoomContainer = () => {
     let Sock = new SockJS("http://localhost:8080/ws");
     stompClient = over(Sock);
     stompClient.connect({}, onConnected, onError);
+    console.log('try connect')
   };
 
   const onConnected = () => {
