@@ -26,10 +26,14 @@ const ChatRoomContainer = () => {
   };
 
   const registerUser = () => {
+    if (userData.username.length > 0)
+    {
     let Sock = new SockJS("http://192.168.0.42:8080/ws");
     stompClient = over(Sock);
     stompClient.connect({}, onConnected, onError);
     console.log('try connect')
+    }
+    else {alert('please enter a username')}
   };
 
   const onConnected = () => {
