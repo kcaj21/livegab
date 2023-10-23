@@ -10,8 +10,8 @@ const ChatContent = ({tab, userData, publicChats, privateChats, sendPublicMessag
         {tab === "CHATROOM"
           ? publicChats.map((chat, index) => (
             <li
-                className={`chat-bubble max-w-[90%] break-words bg-secondary text-[#ffffffb9] ${
-                  chat.senderName !== userData.username ? "place-self-start ml-4" : "place-self-end mr-4"
+                className={`chat-bubble max-w-[90%] break-words bg-[#282b30] text-[#ffffffb9] ${
+                  chat.senderName !== userData.username ? "place-self-start ml-4" : "place-self-end bg-[#7289da] mr-4"
                 }`}
                 key={index}
               >
@@ -25,7 +25,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, sendPublicMessag
                   </li>
             ))
           : privateChats.get(tab).map((chat, index) => (
-            <li className={`chat-bubble max-w-[90%] break-words  bg-secondary text-[#ffffffb9] ${
+            <li className={`chat-bubble max-w-[90%] break-words  bg-[#282b30] text-[#ffffffb9] ${
                   chat.senderName !== userData.username ? "place-self-start ml-4" : "place-self-end mr-4"
                 }`} key={index}>
                     {chat.senderName !== userData.username && (
