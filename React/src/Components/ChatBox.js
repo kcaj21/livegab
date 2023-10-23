@@ -12,14 +12,33 @@ const ChatBox = ({
   sendPublicMessage,
   sendPrivateMessage,
   setTab,
+  onConnected
 }) => {
   const chatContentRef = useRef(null);
 
+  const autoScroll = () => {
+    
+    if (
+    chatContentRef.current && chatContentRef.current.scrollTop >= (chatContentRef.current.scrollHeight - (window.screen.height*0.92))
+    ) {
+    chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight}
+  }
+
+  const initialScroll = () => {
+    if (
+      chatContentRef.current.scrollTop  <= 10
+      ) 
+      {chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight}
+  }
+
+  useEffect(() => {
+    initialScroll()
+  })
+
+  
   useEffect(() => {
 
-    if (chatContentRef.current && chatContentRef.current.scrollTop >= (chatContentRef.current.scrollHeight - (window.screen.height*0.92))) {
-      chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
-    }
+    autoScroll()
   }, [publicChats, privateChats]);
 
   return (

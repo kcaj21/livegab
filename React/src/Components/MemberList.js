@@ -4,6 +4,8 @@ const MemberList = ({ tab, privateChats, setTab, userData }) => {
 
         useEffect(() => {}, [privateChats]);
 
+  
+
   return (
             <div className="member-list cursor-default text-[#8d8f92] text-center">
                 <ul>
@@ -22,8 +24,3 @@ const MemberList = ({ tab, privateChats, setTab, userData }) => {
 };
 
 export default MemberList;
-
-
-
-
-
