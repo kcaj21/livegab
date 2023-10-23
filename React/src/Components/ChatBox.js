@@ -29,7 +29,7 @@ const ChatBox = ({
             sendPrivateMessage={sendPrivateMessage}
           />
           </div>
-        <div className="messageSender mb-4 mx-auto pr-6 h-[8%] w-[79%] fixed bottom-0 right-0">
+        <div className="messageSender mb-4 mx-auto pr-4 h-[8%] w-[79%] fixed bottom-0 right-0">
           <MessageInput
             tab={tab}
             userData={userData}
