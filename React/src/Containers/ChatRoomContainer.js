@@ -26,13 +26,15 @@ const ChatRoomContainer = () => {
   };
 
   const registerUser = () => {
-    if (userData.username.length > 0)
-    {
+    if (userData.username.length > 0) {
+
+    console.log('Connecting to server...')
     let Sock = new SockJS("http://192.168.0.42:8080/ws");
     stompClient = over(Sock);
     stompClient.connect({}, onConnected, onError);
-    console.log('try connect')
+
     }
+
     else {alert('please enter a username')}
   };
 
@@ -42,7 +44,6 @@ const ChatRoomContainer = () => {
       return response.json()
     })
     .then(data => {
-    console.log(data);
     data.forEach(message => {
       if (message.message != null){
         publicChats.push(message);
@@ -122,7 +123,6 @@ const ChatRoomContainer = () => {
         };
         stompClient.send('/app/message', {}, JSON.stringify(chatMessage));
         setUserData({...userData, "message": ""})
-        console.log(userData.message)
     }
   }
 

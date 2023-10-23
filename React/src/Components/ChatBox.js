@@ -14,10 +14,9 @@ const ChatBox = ({
   setTab,
 }) => {
   return (
-    <div className="Chatbox h-screen flex flex-col-2">
+    <div className="Chatbox h-screen flex flex-col-1">
       <div className="SideBar w-full max-w-[20%] border-r border-[#ffffff29]  bg-primary text-white shadow-lg">
         <MemberList tab={tab} privateChats={privateChats} setTab={setTab} userData={userData} />
-        <div className='border-t border-[#ffffff29] py-2 text-center'>{userData.username}</div>
       </div>
         <div className='h-[90%] overflow-y-auto'>
           <ChatContent 
