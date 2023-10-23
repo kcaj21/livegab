@@ -16,12 +16,12 @@ const MessageInput = ({tab,
       
 
   return (
-    <div className="send-message h-full flex flex-col-2 border-2 border-solid rounded-xl border-[#2f3245] hover:border-[#3d4059] ">
+    <div className="send-message h-full flex flex-col-2 border border-[#424549] rounded hover:border-[#3d4059] ">
     <input
       name="message"
       type="text"
       
-      className="input-message pl-2 w-[80%] bg-primary "
+      className="input-message border-[#424549] rounded pl-2 w-[80%] bg-[#424549] "
       placeholder={
         tab === "CHATROOM"
           ? "Type a public message..."
