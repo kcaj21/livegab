@@ -17,7 +17,7 @@ const ChatBox = ({
 
   useEffect(() => {
 
-    if (chatContentRef.current && chatContentRef.current.scrollTop >= (chatContentRef.current.scrollHeight - 800)) {
+    if (chatContentRef.current && chatContentRef.current.scrollTop >= (chatContentRef.current.scrollHeight - (window.screen.height*0.92))) {
       chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
     }
   }, [publicChats, privateChats]);
