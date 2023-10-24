@@ -15,11 +15,11 @@ const MemberList = ({ tab, privateChats, setTab, userData }) => {
           onClick={() => {
             setTab("CHATROOM");
           }}
-          className="max-w-[100%] text-center break-words cursor-pointer ml-2 mt-6 hover:bg-primary hover:rounded-md hover:text-[#ffffffb9] font-thin text-lg"
+          className={`max-w-[100%] text-center break-words cursor-pointer ml-2 mt-6 hover:bg-primary hover:rounded-md hover:text-[#ffffffb9] font-thin text-lg ${ tab === 'CHATROOM' ? 'text-[#7289da] ' : ''}`}
         >
           PUBLIC MESSAGES
         </li>
-        <li className="max-w-[100%] text-center ml-2 mt-6 mb-2 break-words rounded font-thin text-lg">
+        <li className={`max-w-[100%] text-center ml-2 mt-6 mb-2 break-words rounded font-thin text-lg ${ tab !== 'CHATROOM' ? 'text-[#7289da] ' : ''}`}>
           DIRECT MESSAGES
         </li>
         <div className="overflow-y-auto max-h-[80vh]">
@@ -28,7 +28,7 @@ const MemberList = ({ tab, privateChats, setTab, userData }) => {
               onClick={() => {
                 setTab(name);
               }}
-              className="py-1 px-1 break-all mr-1 ml-1 cursor-pointer hover:bg-primary hover:rounded-md hover:text-[#ffffffb9] text-xl"
+              className={`py-1 px-1 break-all mr-1 ml-1 mb-1 text-center cursor-pointer hover:bg-primary hover:rounded-md hover:text-[#ffffffb9] text-xl ${ name === tab ? 'text-[#FFFFFF] rounded-md border-b border border-[#7289da]' : ''}`}
               key={index}
             >
               {name === userData.username ? "" : name}

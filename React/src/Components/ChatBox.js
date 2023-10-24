@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import MemberList from './MemberList';
+import MobileMemberList from './MobileMemberList';
 import ChatContent from './ChatContent';
 import MessageInput from './MessageInput';
 
@@ -68,13 +69,13 @@ const ChatBox = ({
       </div>
       {!sidebarOpen ? null : (
         <div className='mobile-sidebar fixed border-r-2 border-[#27292c] left-0 z-10 h-screen bg-[#282b30] w-[60%]'>
-          <MemberList tab={tab} privateChats={privateChats} setTab={setTab} userData={userData} />
+          <MobileMemberList tab={tab} privateChats={privateChats} setTab={setTab} userData={userData} handleSidebarToggle={handleSidebarToggle} />
         </div>
       )}
 
       <div className='Chatbox h-screen flex flex-col-1'>
         <div className='Desktop-sideBar border-r-2 border-[#27292c] w-full max-w-[20%] bg-[#282b30] hidden sm:block border-[#ffffff29] text-white shadow-lg'>
-          <MemberList tab={tab} privateChats={privateChats} setTab={setTab} userData={userData} />
+          <MemberList tab={tab} privateChats={privateChats} setTab={setTab} userData={userData}/>
         </div>
         <div className='h-[90%] sm:ml-0 ml-8 w-screen overflow-y-auto' ref={chatContentRef}>
           <ChatContent
