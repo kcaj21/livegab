@@ -46,7 +46,7 @@ const ChatBox = ({
       <div className="SideBar w-full max-w-[20%] bg-[#282b30] border-[#ffffff29] text-white shadow-lg">
         <MemberList tab={tab} privateChats={privateChats} setTab={setTab} userData={userData} />
       </div>
-      <div className='h-[90%] overflow-y-auto' ref={chatContentRef}>
+      <div className='h-[90%] w-screen overflow-y-auto' ref={chatContentRef}>
         <ChatContent 
           tab={tab}
           userData={userData}

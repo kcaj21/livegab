@@ -6,7 +6,7 @@ const ChatContent = ({tab, userData, publicChats, privateChats, sendPublicMessag
     return (
 
     <div className="chat-content">
-      <ul className="chat-messages mt-2 mr-3 ml-1 mb-2 space-y-2 grid grid-cols-1 max-w-screen text-xl">
+      <ul className="chat-messages mt-2 mr-3 ml-1 mb-2 space-y-2 grid grid-cols-1 text-xl">
         {tab === "CHATROOM"
           ? publicChats.map((chat, index) => (
             <li
@@ -26,14 +26,14 @@ const ChatContent = ({tab, userData, publicChats, privateChats, sendPublicMessag
             ))
           : privateChats.get(tab).map((chat, index) => (
             <li className={`chat-bubble max-w-[90%] break-words  bg-[#282b30] text-[#ffffffb9] ${
-                  chat.senderName !== userData.username ? "place-self-start ml-4" : "place-self-end mr-4"
+                  chat.senderName !== userData.username ? "place-self-start ml-4" : "place-self-end bg-[#7289da] mr-4"
                 }`} key={index}>
+                    <div className="message-data">{chat.message}</div>
                     {chat.senderName !== userData.username && (
                       <div className="avatar">{chat.senderName}</div>
                     )}
-                    <div className="message-data">{chat.message}</div>
                     {chat.senderName === userData.username && (
-                      <div className="avatar-self">{chat.senderName}</div>
+                      <div className="avatar-self">You</div>
                     )}
                   </li>
             ))}

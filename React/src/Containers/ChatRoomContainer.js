@@ -43,7 +43,7 @@ const ChatRoomContainer = () => {
     })
     .then(data => {
     data.forEach(message => {
-      if (message.message != null){
+      if (message.status === 'MESSAGE'){
         publicChats.push(message);
         setPublicChats([...publicChats]);
       }
