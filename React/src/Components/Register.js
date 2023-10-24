@@ -9,6 +9,7 @@ const Register = ({userData, handleValue, registerUser}) => {
     <input
       name="username"
       type='text'
+      maxLength={50}
       className="sm:w-[30%] w-[60%] h-[5%] border text-slate-400 rounded bg-[#282A3A] border-[#7d94b5] text-center mb-4"
       placeholder="Enter your username"
       value={userData.username}
