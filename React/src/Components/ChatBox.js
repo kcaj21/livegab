@@ -52,7 +52,7 @@ const ChatBox = ({
       <div className=''>
       <svg
   onClick={handleSidebarToggle}
-  className="fixed h-10 w-10 top-0 z-20 sm:hidden block border-2 border-[#424549] rounded-md ml-1 mt-1"
+  className="fixed top-0 h-9 w-9 z-20 sm:hidden block border border-[#424549] rounded-md ml-1 mt-4"
   fill="none"
   viewBox="0 0 24 24"
   stroke="#8398e6"
@@ -61,7 +61,8 @@ const ChatBox = ({
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
-    d="M4 6h16M4 12h16m-7 6h7"
+    
+    d={` ${!sidebarOpen ? 'M4 6h16M4 12h16m-7 6h7' : 'M6 18L18 6M6 6l12 12'}`}
   />
 </svg>
       </div>

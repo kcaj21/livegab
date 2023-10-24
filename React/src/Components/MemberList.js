@@ -15,11 +15,11 @@ const MemberList = ({ tab, privateChats, setTab, userData }) => {
           onClick={() => {
             setTab("CHATROOM");
           }}
-          className="max-w-[100%] text-center break-words cursor-pointer ml-2 mt-6 hover:bg-primary hover:rounded-md hover:text-[#ffffffb9] font-thin md:text-lg text-xs"
+          className="max-w-[100%] text-center break-words cursor-pointer ml-2 mt-6 hover:bg-primary hover:rounded-md hover:text-[#ffffffb9] font-thin text-lg"
         >
           PUBLIC MESSAGES
         </li>
-        <li className="max-w-[100%] text-center ml-2 mt-6 mb-2 break-words rounded font-thin md:text-lg text-xs">
+        <li className="max-w-[100%] text-center ml-2 mt-6 mb-2 break-words rounded font-thin text-lg">
           DIRECT MESSAGES
         </li>
         <div className="overflow-y-auto max-h-[80vh]">
@@ -28,7 +28,7 @@ const MemberList = ({ tab, privateChats, setTab, userData }) => {
               onClick={() => {
                 setTab(name);
               }}
-              className="py-1 px-1 break-all mr-1 ml-1 cursor-pointer hover:bg-primary hover:rounded-md hover:text-[#ffffffb9] md:text-base text-xs"
+              className="py-1 px-1 break-all mr-1 ml-1 cursor-pointer hover:bg-primary hover:rounded-md hover:text-[#ffffffb9] text-xl"
               key={index}
             >
               {name === userData.username ? "" : name}
