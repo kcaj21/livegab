@@ -13,7 +13,6 @@ const MessageInput = ({tab,
         } else if (event.keyCode === 13 || event.which === 13) {
           sendPrivateMessage()
         }}
-      
 
   return (
     <div className="send-message h-full flex flex-col-2 border bg-[#424549] border-[#424549] rounded-lg hover:border-[#3d4059] ">

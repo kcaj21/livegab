@@ -1,6 +1,11 @@
 import React from 'react'
 
 const Register = ({userData, handleValue, registerUser}) => {
+
+  const handleRegKeyPress = (event) => {
+    if (event.keyCode === 13 || event.which === 13) {
+      registerUser()
+    } }
   
   return (
 
@@ -10,6 +15,7 @@ const Register = ({userData, handleValue, registerUser}) => {
       name="username"
       type='text'
       maxLength={50}
+      onKeyPress={handleRegKeyPress}
       className="sm:w-[30%] w-[60%] h-[5%] border text-slate-400 rounded bg-[#282A3A] border-[#7d94b5] text-center mb-4"
       placeholder="Enter your username"
       value={userData.username}

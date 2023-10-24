@@ -1,7 +1,6 @@
 import React from 'react'
-import MessageInput from './MessageInput';
 
-const ChatContent = ({tab, userData, publicChats, privateChats, sendPublicMessage, handleValue, sendPrivateMessage}) => {
+const ChatContent = ({tab, userData, publicChats, privateChats}) => {
   
     return (
 

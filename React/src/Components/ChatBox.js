@@ -36,7 +36,6 @@ const ChatBox = ({
   };
 
   useEffect(() => {
-    console.log(document.documentElement.scrollTop)
     initialScroll();
   }, );
 
