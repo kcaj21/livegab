@@ -20,7 +20,7 @@ const MessageInput = ({tab,
     <input
       name="message"
       type="text"
-      
+      required
       className="input-message border-[#424549] rounded pl-2 w-[80%] bg-[#424549] "
       placeholder={
         tab === "CHATROOM"
