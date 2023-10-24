@@ -3,6 +3,7 @@ import MemberList from './MemberList';
 import MobileMemberList from './MobileMemberList';
 import ChatContent from './ChatContent';
 import MessageInput from './MessageInput';
+import SideBarToggle from './SideBarToggle';
 
 const ChatBox = ({
   tab,
@@ -51,21 +52,7 @@ const ChatBox = ({
     
     <div className=''>
       <div className=''>
-      <svg
-  onClick={handleSidebarToggle}
-  className="fixed top-0 h-9 w-9 z-20 sm:hidden block border border-[#424549] rounded-md ml-1 mt-4"
-  fill="none"
-  viewBox="0 0 24 24"
-  stroke="#8398e6"
->
-  <path
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth="2"
-    
-    d={` ${!sidebarOpen ? 'M4 6h16M4 12h16m-7 6h7' : 'M6 18L18 6M6 6l12 12'}`}
-  />
-</svg>
+        <SideBarToggle handleSidebarToggle={handleSidebarToggle} sidebarOpen={sidebarOpen} />
       </div>
       {!sidebarOpen ? null : (
         <div className='mobile-sidebar fixed border-r-2 border-[#27292c] left-0 z-10 h-screen bg-[#282b30] w-[60%]'>
@@ -74,7 +61,7 @@ const ChatBox = ({
       )}
 
       <div className='Chatbox h-screen flex flex-col-1'>
-        <div className='Desktop-sideBar border-r-2 border-[#27292c] w-full max-w-[20%] bg-[#282b30] hidden sm:block border-[#ffffff29] text-white shadow-lg'>
+        <div className='Desktop-sideBar border-r-2 border-[#26282b] w-full max-w-[20%] bg-[#282b30] hidden sm:block border-[#ffffff29] text-white shadow-lg'>
           <MemberList tab={tab} privateChats={privateChats} setTab={setTab} userData={userData}/>
         </div>
         <div className='h-[90%] sm:ml-0 ml-8 w-screen overflow-y-auto' ref={chatContentRef}>
