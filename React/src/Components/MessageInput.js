@@ -1,11 +1,6 @@
 import React from 'react'
 
-const MessageInput = ({tab,
-    userData,
-    handleValue,
-    sendPublicMessage,
-    sendPrivateMessage,
-    }) => {
+const MessageInput = ({tab, userData, handleValue, sendPublicMessage, sendPrivateMessage}) => {
 
       const handleKeyPress = (event) => {
         if (event.keyCode === 13 || event.which === 13 && tab === "CHATROOM") {

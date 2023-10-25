@@ -14,12 +14,12 @@ const ChatContent = ({tab, userData, publicChats, privateChats}) => {
                 }`}
                 key={index}
               >
-                    <div className="message-data">{chat.message}</div>
+                    <div>{chat.message}</div>
                     {chat.senderName !== userData.username && (
-                      <div className="avatar">{chat.senderName}</div>
+                      <div>{chat.senderName}</div>
                     )}
                     {chat.senderName === userData.username && (
-                      <div className="avatar-self">You</div>
+                      <div>You</div>
                     )}
                   </li>
             ))
@@ -27,12 +27,12 @@ const ChatContent = ({tab, userData, publicChats, privateChats}) => {
             <li className={`chat-bubble max-w-[90%] break-all  bg-[#282b30] text-[#ffffffb9] ${
                   chat.senderName !== userData.username ? "place-self-start ml-4" : "place-self-end bg-[#7289da] mr-4"
                 }`} key={index}>
-                    <div className="message-data">{chat.message}</div>
+                    <div>{chat.message}</div>
                     {chat.senderName !== userData.username && (
-                      <div className="avatar">{chat.senderName}</div>
+                      <div>{chat.senderName}</div>
                     )}
                     {chat.senderName === userData.username && (
-                      <div className="avatar-self">You</div>
+                      <div>You</div>
                     )}
                   </li>
             ))}

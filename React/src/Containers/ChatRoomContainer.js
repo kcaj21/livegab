@@ -146,13 +146,27 @@ const ChatRoomContainer = () => {
   };
 
   return (
-    <div className="chatroom-container bg-primary">
+    <div className="chatbox-container bg-primary">
+
       {userData.connected ? (
-      <ChatBox tab={tab} userData={userData} publicChats={publicChats} privateChats={privateChats}
-      handleValue={handleValue} sendPublicMessage={sendPublicMessage} sendPrivateMessage={sendPrivateMessage} setTab={setTab} onConnected={onConnected}/>
+      <ChatBox 
+      tab={tab} 
+      userData={userData} 
+      publicChats={publicChats} 
+      privateChats={privateChats}
+      handleValue={handleValue} 
+      sendPublicMessage={sendPublicMessage} 
+      sendPrivateMessage={sendPrivateMessage} 
+      setTab={setTab} onConnected={onConnected}/>
+
       ) : (
+
       <div className="flex flex-col justify-center h-screen">
-      <Register userData={userData} handleValue={handleValue} registerUser={registerUser} />
+        <Register 
+        userData={userData} 
+        handleValue={handleValue} 
+        registerUser={registerUser} 
+        />
       </div>
       )}
     </div>

@@ -1,23 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
-import MemberList from './MemberList';
-import MobileMemberList from './MobileMemberList';
+import DesktopSideBar from './DesktopSideBar';
+import MobileSideBar from './MobileSideBar';
 import ChatContent from './ChatContent';
 import MessageInput from './MessageInput';
 import SideBarToggle from './SideBarToggle';
 
-const ChatBox = ({
-  tab,
-  userData,
-  publicChats,
-  privateChats,
-  handleValue,
-  sendPublicMessage,
-  sendPrivateMessage,
-  setTab,
-  onConnected
-}) => {
+const ChatBox = ({tab, userData, publicChats, privateChats, handleValue, sendPublicMessage, sendPrivateMessage, setTab}) => {
+
   const chatContentRef = useRef(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    initialScroll();
+  }, );
+
+  useEffect(() => {
+    autoScroll();
+  }, [publicChats, privateChats]);
 
   const autoScroll = () => {
     if (
@@ -35,35 +34,38 @@ const ChatBox = ({
     }
   };
 
-  useEffect(() => {
-    initialScroll();
-  }, );
-
-  useEffect(() => {
-    autoScroll();
-  }, [publicChats, privateChats]);
-
   const handleSidebarToggle = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
   return (
     
-    <div className=''>
+    <div>
       <div className='ml-1'>
-        <SideBarToggle handleSidebarToggle={handleSidebarToggle} sidebarOpen={sidebarOpen} />
+        <SideBarToggle 
+        handleSidebarToggle={handleSidebarToggle} 
+        sidebarOpen={sidebarOpen} 
+        />
       </div>
-      {!sidebarOpen ? null : (
-        <div className='mobile-sidebar fixed border-r-2 border-[#27292c] left-0 z-10 h-screen bg-[#282b30] w-full'>
-          <MobileMemberList tab={tab} privateChats={privateChats} setTab={setTab} userData={userData} handleSidebarToggle={handleSidebarToggle} />
-        </div>
-      )}
-
+      {
+        !sidebarOpen ? 
+        null : (
+          <div className='fixed border-r-2 border-[#27292c] left-0 z-10 h-screen bg-[#282b30] w-full'>
+            <MobileSideBar
+              tab={tab} 
+              privateChats={privateChats} 
+              setTab={setTab} userData={userData} 
+              handleSidebarToggle={handleSidebarToggle}
+              />
+          </div>
+        )
+      }
       <div className='Chatbox h-screen flex flex-col-1'>
-        <div className='Desktop-sideBar border-r-2 border-[#26282b] w-full max-w-[20%] bg-[#282b30] hidden sm:block border-[#ffffff29] text-white shadow-lg'>
-          <MemberList tab={tab} privateChats={privateChats} setTab={setTab} userData={userData}/>
+        <div className='border-r-2 border-[#26282b] w-full max-w-[20%] bg-[#282b30] hidden sm:block border-[#ffffff29] text-white shadow-lg'>
+          <DesktopSideBar tab={tab} privateChats={privateChats} setTab={setTab} userData={userData}/>
         </div>
-        <div className='h-[90%] sm:ml-0 ml-8 w-screen overflow-y-auto' ref={chatContentRef}>
+        <div className='h-[90%] sm:ml-0 ml-8 w-screen overflow-y-auto'
+        ref={chatContentRef}>
           <ChatContent
             tab={tab}
             userData={userData}
@@ -73,7 +75,7 @@ const ChatBox = ({
             sendPublicMessage={sendPublicMessage}
             sendPrivateMessage={sendPrivateMessage}
           />
-          <div className='messageSender mb-4 pr-4 h-[8%] sm:w-[79%] w-[98%] fixed bottom-0 right-0'>
+          <div className='mb-4 pr-4 h-[8%] sm:w-[79%] w-[98%] fixed bottom-0 right-0'>
             <MessageInput
               tab={tab}
               userData={userData}
