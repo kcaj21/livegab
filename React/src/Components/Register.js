@@ -16,7 +16,7 @@ const Register = ({userData, handleValue, registerUser}) => {
       type='text'
       maxLength={50}
       onKeyPress={handleRegKeyPress}
-      className="sm:w-[30%] w-[60%] h-[5%] border text-slate-400 rounded bg-[#282A3A] border-[#7d94b5] text-center mb-4"
+      className="sm:w-[30%] w-[60%] h-[5%] border drop-shadow-lg text-slate-400 rounded bg-[#282A3A] border-[#7d94b5] text-center mb-4"
       placeholder="Enter your username"
       value={userData.username}
       onChange={handleValue}
@@ -24,7 +24,7 @@ const Register = ({userData, handleValue, registerUser}) => {
     <button
     id='reg-btn'
     onClick={registerUser}
-    className="glass sm:w-[30%] w-[60%] h-[5%] cursor:pointer bg-[#007acc] text-white rounded hover:bg-[#2790d5]">
+    className="glass drop-shadow-lg sm:w-[30%] w-[60%] h-[5%] cursor:pointer bg-[#007acc] text-white rounded hover:bg-[#2790d5]">
       Join
     </button>
   </div>

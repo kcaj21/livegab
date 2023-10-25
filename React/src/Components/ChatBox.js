@@ -40,9 +40,10 @@ const ChatBox = ({tab, userData, publicChats, privateChats, handleValue, sendPub
 
   return (
     
-    <div>
+    <div className='drop-shadow-md'>
       <div className='ml-1'>
-        <SideBarToggle 
+        <SideBarToggle
+        className='drop-shadow-xl'
         handleSidebarToggle={handleSidebarToggle} 
         sidebarOpen={sidebarOpen} 
         />
@@ -60,11 +61,11 @@ const ChatBox = ({tab, userData, publicChats, privateChats, handleValue, sendPub
           </div>
         )
       }
-      <div className='Chatbox h-screen flex flex-col-1'>
-        <div className='border-r-2 border-[#26282b] w-full max-w-[20%] bg-[#282b30] hidden sm:block border-[#ffffff29] text-white shadow-lg'>
+      <div className='Chatbox  h-screen flex flex-col-1'>
+        <div className=' w-full max-w-[20%] bg-[#282b30] hidden sm:block  text-white shadow-lg'>
           <DesktopSideBar tab={tab} privateChats={privateChats} setTab={setTab} userData={userData}/>
         </div>
-        <div className='h-[90%] sm:ml-0 ml-8 w-screen overflow-y-auto'
+        <div className='h-[90%]  sm:ml-0 ml-8 w-screen overflow-y-auto'
         ref={chatContentRef}>
           <ChatContent
             tab={tab}
