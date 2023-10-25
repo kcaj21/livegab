@@ -28,7 +28,7 @@ const MemberList = ({ tab, privateChats, setTab, userData }) => {
               onClick={() => {
                 setTab(name);
               }}
-              className={`py-1 px-1 break-all mr-1 ml-1 mb-1 text-center cursor-pointer hover:bg-primary hover:rounded-md hover:text-[#ffffffb9] text-xl ${ name === tab ? 'text-[#FFFFFF] rounded-md border-b border border-[#7289da]' : ''}`}
+              className={`py-1 px-1 break-all mr-1 ml-1 mb-1 text-center cursor-pointer hover:bg-primary hover:rounded-md hover:text-[#ffffffb9] text-xl ${ name === tab ? 'text-[#FFFFFF] rounded-md border border-[#7289da]' : ''}`}
               key={index}
             >
               {name === userData.username ? "" : name}

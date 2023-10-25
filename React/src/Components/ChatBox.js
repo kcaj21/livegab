@@ -50,11 +50,11 @@ const ChatBox = ({
   return (
     
     <div className=''>
-      <div className=''>
+      <div className='ml-1'>
         <SideBarToggle handleSidebarToggle={handleSidebarToggle} sidebarOpen={sidebarOpen} />
       </div>
       {!sidebarOpen ? null : (
-        <div className='mobile-sidebar fixed border-r-2 border-[#27292c] left-0 z-10 h-screen bg-[#282b30] w-[60%]'>
+        <div className='mobile-sidebar fixed border-r-2 border-[#27292c] left-0 z-10 h-screen bg-[#282b30] w-full'>
           <MobileMemberList tab={tab} privateChats={privateChats} setTab={setTab} userData={userData} handleSidebarToggle={handleSidebarToggle} />
         </div>
       )}
