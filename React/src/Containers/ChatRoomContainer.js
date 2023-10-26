@@ -29,7 +29,7 @@ const ChatRoomContainer = () => {
     if (userData.username.length > 0) {
 
     console.log('Connecting to server...')
-    let Sock = new SockJS(`http://${process.env.REACT_APP_IP}:8080/ws`);
+    let Sock = new SockJS(`https://${process.env.REACT_APP_IP}:8080/ws`);
     stompClient = over(Sock);
     stompClient.connect({}, onConnected, onError);
 
@@ -39,7 +39,7 @@ const ChatRoomContainer = () => {
   };
 
   const onConnected = () => {
-    fetch(`http://${process.env.REACT_APP_IP}:8080/allMessages`)
+    fetch(`https://${process.env.REACT_APP_IP}:8080/allMessages`)
     .then(response => {
       return response.json()
     })
