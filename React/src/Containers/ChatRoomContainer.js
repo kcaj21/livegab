@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import Register from "../Components/Register";
 import ChatBox from "../Components/ChatBox";
-import axios from "axios";
 
 let stompClient = null;
 
@@ -23,11 +22,14 @@ const ChatRoomContainer = () => {
     setUserData({ ...userData, [name]:value });
   };
 
+  // const EC2 = process.env.IP
+
   const registerUser = () => {
+    // console.log({EC2})
     if (userData.username.length > 0) {
 
     console.log('Connecting to server...')
-    let Sock = new SockJS("http://192.168.0.42:8080/ws");
+    let Sock = new SockJS(`http://${process.env.REACT_APP_IP}:8080/ws`);
     stompClient = over(Sock);
     stompClient.connect({}, onConnected, onError);
 
@@ -37,7 +39,7 @@ const ChatRoomContainer = () => {
   };
 
   const onConnected = () => {
-    fetch("http://192.168.0.42:8080/allMessages/")
+    fetch(`http://${process.env.REACT_APP_IP}:8080/allMessages`)
     .then(response => {
       return response.json()
     })
