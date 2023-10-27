@@ -9,14 +9,9 @@ Or if you'd rather, clone the repo, open your terminal/cmd, cd into the 'react' 
 npm i
 npm start
 
+Tech stack: React, Tailwind CSS, Java, Spring, SockJS, StompJS
+
 ![Screenshot 2023-10-27 at 14 45 20](https://github.com/kcaj21/livegab/assets/127600321/b8ee3c59-942a-44bc-a8cb-3df9212b9780)
 ![Screenshot 2023-10-27 at 14 46 31](https://github.com/kcaj21/livegab/assets/127600321/8c1f8632-69f4-4969-8a1e-015484b46ccf)
 
-Tech stack:
 
-React
-Tailwind CSS
-Java
-Spring
-SockJS
-StompJS
