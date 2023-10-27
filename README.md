@@ -4,9 +4,12 @@ This is a live solo project, of a simple chat application.
 
 Try it out here: http://livegab-v0.1.s3-website-eu-west-1.amazonaws.com/
 
-Or if you'd rather, clone the repo, open your terminal/cmd, cd into the 'react' folder and enter:
+If you have nobody to talk to, you can open the app in multiple browser tabs and sign in with different user names.
+
+If you'd rather clone the repo, open it in your terminal/cmd, cd into the 'react' folder and enter:
 
 npm i
+
 npm start
 
 Tech stack: React, Tailwind CSS, Java, Spring, SockJS, StompJS
