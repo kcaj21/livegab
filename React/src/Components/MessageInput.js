@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef, useState} from 'react'
 
 const MessageInput = ({tab, userData, handleValue, sendPublicMessage, sendPrivateMessage}) => {
 
@@ -7,11 +7,17 @@ const MessageInput = ({tab, userData, handleValue, sendPublicMessage, sendPrivat
           sendPublicMessage()
         } else if (event.keyCode === 13 || event.which === 13) {
           sendPrivateMessage()
-        }}
+        }
+        // console.log(messageLength.value().length)
+      }
+
+  // const messageLength = useRef(0)
 
   return (
-    <div className="send-message h-full flex flex-col-2 border bg-[#424549] border-[#424549] rounded-lg hover:border-[#3d4059] ">
+    <div className="send-message h-full flex flex-col-2 border bg-[#424549] border-[#424549] rounded-lg hover:border-[#3d4059]">
     <input
+      // ref={messageLength}
+      minLength={1}
       name="message"
       type="text"
       required

@@ -39,7 +39,7 @@ const ChatRoomContainer = () => {
   };
 
   const onConnected = () => {
-    fetch(`http://34.242.207.195/allMessages`)
+    fetch(`http://34.242.207.195:8080/allMessages`)
     .then(response => {
       return response.json()
     })

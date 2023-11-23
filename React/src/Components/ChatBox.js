@@ -51,7 +51,7 @@ const ChatBox = ({tab, userData, publicChats, privateChats, handleValue, sendPub
       {
         !sidebarOpen ? 
         null : (
-          <div className='fixed border-r-2 border-[#27292c] left-0 z-10 h-screen bg-[#282b30] w-full'>
+          <div className='fixed border-r-2 border-[#27292c] left-0 z-10 h-screen bg-[#282b30]  w-full'>
             <MobileSideBar
               tab={tab} 
               privateChats={privateChats} 
