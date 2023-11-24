@@ -5,7 +5,7 @@ import ChatContent from './ChatContent';
 import MessageInput from './MessageInput';
 import SideBarToggle from './SideBarToggle';
 
-const ChatBox = ({tab, userData, publicChats, privateChats, handleValue, sendPublicMessage, sendPrivateMessage, setTab}) => {
+const ChatBox = ({isLoadingChatHistory, tab, userData, publicChats, privateChats, handleValue, sendPublicMessage, sendPrivateMessage, setTab}) => {
 
   const chatContentRef = useRef(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -52,7 +52,8 @@ const ChatBox = ({tab, userData, publicChats, privateChats, handleValue, sendPub
         !sidebarOpen ? 
         null : (
           <div className='fixed border-r-2 border-[#27292c] left-0 z-10 h-screen bg-[#282b30]  w-full'>
-            <MobileSideBar
+              <MobileSideBar
+              isLoadingChatHistory={isLoadingChatHistory}
               tab={tab} 
               privateChats={privateChats} 
               setTab={setTab} userData={userData} 
@@ -63,7 +64,7 @@ const ChatBox = ({tab, userData, publicChats, privateChats, handleValue, sendPub
       }
       <div className='Chatbox  h-screen flex flex-col-1'>
         <div className=' w-full max-w-[20%] bg-[#282b30] hidden sm:block  text-white shadow-lg'>
-          <DesktopSideBar tab={tab} privateChats={privateChats} setTab={setTab} userData={userData}/>
+          <DesktopSideBar isLoadingChatHistory={isLoadingChatHistory} tab={tab}  privateChats={privateChats} setTab={setTab} userData={userData}/>
         </div>
         <div className='h-[90%]  sm:ml-0 ml-8 w-screen overflow-y-auto'
         ref={chatContentRef}>

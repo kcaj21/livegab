@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const DesktopSideBar = ({ tab, privateChats, setTab, userData }) => {
+const DesktopSideBar = ({ isLoadingChatHistory, tab, privateChats, setTab, userData }) => {
 
   useEffect(() => {
   }, [privateChats]);
@@ -47,6 +47,10 @@ const DesktopSideBar = ({ tab, privateChats, setTab, userData }) => {
           ))}
         </div>
       </ul>
+      {isLoadingChatHistory ? (
+        <div className='fixed py-6 mx-2 bottom-0 break-all font-thin border-[#ffffff29] mb-8'>
+          Loading chat history...
+        </div> ) : ( null)}
       <div className="fixed py-6 mx-2 bottom-0 break-all font-thin border-[#ffffff29] mt-4">
         Signed in as: {userData.username}
       </div>
