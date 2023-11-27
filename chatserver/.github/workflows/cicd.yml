@@ -9,6 +9,10 @@ jobs:
     runs-on:
       - self-hosted
     steps:
+      - name: debug info
+        run: |
+          echo "Current Directory: $(pwd)"
+          echo "Contents of Directory: $(ls -a)"
       - name: Checkout source
         uses: actions/checkout@v3
       - name: Setup Java
