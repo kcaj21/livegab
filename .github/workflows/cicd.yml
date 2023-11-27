@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
+      - name: Change to the project directory
+        run: cd /home/ec2-user/actions-runner/_work/livegab/livegab/chatserver
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
