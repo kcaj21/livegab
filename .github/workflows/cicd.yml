@@ -15,11 +15,14 @@ jobs:
           echo "Contents of Directory: $(ls -a)"
       - name: Checkout source
         uses: actions/checkout@v3
-      - name: Setup Java
+      - name: Setup Java and Maven
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
+      - name: Set up Maven
+        run: |
+          sudo apt-get install -y maven
       - name: Build Project
         run: mvn clean install -DskipTests
       - name: login to docker hub
