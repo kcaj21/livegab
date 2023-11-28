@@ -15,9 +15,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - name: Change to the project directory
-        run: cd chatserver
       - name: Build Project
+        working-directory: /home/ec2-user/actions-runner/_work/livegab/livegab/chatserver
         run: mvn clean install -DskipTests
       - name: login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
