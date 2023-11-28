@@ -35,4 +35,4 @@ jobs:
       - name: delete old container
         run: docker rm -f livegab-container
       - name: run docker container
-        run: docker run -d -p 8080:8080 --name livegab-container kcaj21/livegab
+        run: docker run -d -p 8080:8080 --name livegab-container kcaj21/livegab/chatserver
