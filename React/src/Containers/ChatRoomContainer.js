@@ -40,7 +40,12 @@ const ChatRoomContainer = () => {
   };
 
   const onConnected = () => {
-    fetch(`http://34.242.207.195:8081/allMessages`)
+    const controller = new AbortController()
+
+    setTimeout(() => {
+      controller.abort()
+    }, 8000)
+    fetch(`http://34.242.207.195:8080/allMessages`, {signal: controller.signal})
       .then((response) => {
         return response.json();
       })
@@ -56,7 +61,7 @@ const ChatRoomContainer = () => {
       .catch((error) => {
         console.error(error);
         setIsLoadingChatHistory(false)
-        // alert(error);
+        alert('Chat history unavailable');
       });
     setUserData({ ...userData, connected: true });
     stompClient.subscribe("/chatroom/public", onPublicMessageReceived);
