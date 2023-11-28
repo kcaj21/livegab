@@ -35,4 +35,10 @@ jobs:
       - name: delete old container
         run: docker rm -f livegab-container
       - name: run docker container
-        run: docker-compose up -d
+        run: docker run -d \
+          -e MONGO_CLUSTER=${{secrets.MONGO_CLUSTER}} \
+          -e MONGO_USER=${{secrets.MONGO_USER}} \
+          -e MONGO_PASSWORD=${{secrets.MONGO_PASSWORD}} \
+          -e MONGO_DATABASE=${{secrets.MONGO_DATABASE}} \
+          -p 8080:8080 --name livegab-container \
+          kcaj21/livegab
