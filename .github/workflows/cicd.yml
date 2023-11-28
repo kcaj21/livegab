@@ -15,6 +15,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+      - name: Change to the project directory
+        run: cd chatserver
       - name: Build Project
         run: mvn clean install -DskipTests
       - name: login to docker hub
