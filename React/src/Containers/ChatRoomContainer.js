@@ -7,6 +7,7 @@ import ChatBox from "../Components/ChatBox";
 let stompClient = null;
 
 const ChatRoomContainer = () => {
+  const [isConnected, setIsConnected] = useState(false)
   const [isLoadingChatHistory, setIsLoadingChatHistory] = useState(true);
   const [publicChats, setPublicChats] = useState([]);
   const [privateChats, setPrivateChats] = useState(new Map());
@@ -28,6 +29,7 @@ const ChatRoomContainer = () => {
   const registerUser = () => {
     // console.log({EC2})
     if (userData.username.length > 0) {
+      setIsConnected(true)
       console.log("Connecting to server...");
       let Sock = new SockJS(`http://34.242.207.195:8080/ws`);
       stompClient = over(Sock);
@@ -38,12 +40,12 @@ const ChatRoomContainer = () => {
   };
 
   const onConnected = () => {
-    fetch(`http://34.242.207.195:8080/allMessages`)
+    fetch(`http://34.242.207.195:8081/allMessages`)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        setIsLoadingChatHistory(false)
+        setIsLoadingChatHistory(false);
         data.forEach((message) => {
           if (message.status === "MESSAGE") {
             publicChats.push(message);
@@ -53,7 +55,8 @@ const ChatRoomContainer = () => {
       })
       .catch((error) => {
         console.error(error);
-        // alert('everything is broken.');
+        setIsLoadingChatHistory(false)
+        // alert(error);
       });
     setUserData({ ...userData, connected: true });
     stompClient.subscribe("/chatroom/public", onPublicMessageReceived);
@@ -88,6 +91,8 @@ const ChatRoomContainer = () => {
         publicChats.push(payLoadData);
         setPublicChats([...publicChats]);
         break;
+      default:
+      //do nothing
     }
   };
 
@@ -165,7 +170,8 @@ const ChatRoomContainer = () => {
         />
       ) : (
         <div className="flex flex-col justify-center h-screen">
-          <Register
+            <Register
+            isConnected={isConnected}
             userData={userData}
             handleValue={handleValue}
             registerUser={registerUser}
