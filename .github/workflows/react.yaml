@@ -20,10 +20,11 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
+        working-directory: react       
         run: npm install
 
       - name: Build app
-        working-directory: kcaj21/livegab/react
+        working-directory: react
         run: npm run build
 
       - name: Upload to S3
