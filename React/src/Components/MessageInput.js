@@ -3,7 +3,7 @@ import React from 'react'
 const MessageInput = ({tab, userData, handleValue, sendPublicMessage, sendPrivateMessage}) => {
 
       const handleKeyPress = (event) => {
-        if (event.keyCode === 13 || event.which === 13 && tab === "CHATROOM") {
+        if ((event.keyCode === 13 || event.which === 13) && tab === "CHATROOM") {
           sendPublicMessage()
         } else if (event.keyCode === 13 || event.which === 13) {
           sendPrivateMessage()
