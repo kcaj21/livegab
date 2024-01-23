@@ -50,13 +50,9 @@ const ChatRoomContainer = () => {
         return response.json();
       })
       .then((data) => {
+        console.log(data)
         setIsLoadingChatHistory(false);
-        data.forEach((message) => {
-          if (message.status === "MESSAGE") {
-            publicChats.push(message);
-            setPublicChats([...publicChats]);
-          }
-        });
+        setPublicChats(data)
       })
       .catch((error) => {
         console.error(error);

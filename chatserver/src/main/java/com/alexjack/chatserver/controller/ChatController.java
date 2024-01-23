@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.alexjack.chatserver.model.Status.MESSAGE;
+
 @RestController
 @Controller
 public class ChatController {
@@ -44,7 +46,7 @@ public class ChatController {
     @CrossOrigin(origins = "*")
     @GetMapping("/allMessages")
     public ResponseEntity<List<Message>> getAllMessages(){
-        List<Message> allMessages = messageRepository.findAll();
+        List<Message> allMessages = messageRepository.findMessagesByStatus(MESSAGE);
         return ResponseEntity.ok(allMessages);
     }
 }
