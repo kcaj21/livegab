@@ -31,7 +31,7 @@ const ChatRoomContainer = () => {
     if (userData.username.length > 0) {
       setIsConnected(true)
       console.log("Connecting to server...");
-      let Sock = new SockJS(`http://34.242.207.195:8080/ws`);
+      let Sock = new SockJS(`http://34.172.182.174:8080/ws`);
       stompClient = over(Sock);
       stompClient.connect({}, onConnected, onError);
     } else {
@@ -45,7 +45,7 @@ const ChatRoomContainer = () => {
     setTimeout(() => {
       controller.abort()
     }, 8000)
-    fetch(`http://34.242.207.195:8080/allMessages`, {signal: controller.signal})
+    fetch(`http://34.172.182.174:8080/allMessages`, {signal: controller.signal})
       .then((response) => {
         return response.json();
       })
