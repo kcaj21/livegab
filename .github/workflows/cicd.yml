@@ -16,7 +16,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - name: Build Project
-        working-directory: /home/ec2-user/actions-runner/_work/livegab/livegab/chatserver
+        working-directory: /home/alex_kcaj/actions-runner/_work/livegab/livegab/chatserver
         run: mvn clean install -DskipTests
       - name: login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
@@ -27,8 +27,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on:
-      - aws-ec2
+    runs-on: [self-hosted]
     steps:
       - name: Pull Image from docker hub
         run: docker pull kcaj21/livegab:latest
